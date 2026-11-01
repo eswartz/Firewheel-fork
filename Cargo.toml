@@ -1,6 +1,6 @@
 [package]
 name = "firewheel"
-version = "0.14.0"
+version = "0.14.1"
 description = "An open source audio graph engine for games and other applications"
 repository.workspace = true
 edition.workspace = true
@@ -25,11 +25,7 @@ repository = "https://github.com/BillyDM/firewheel"
 
 [features]
 default = ["std", "cpal", "symphonium", "sampler_node", "tracing"]
-std = [
-    "firewheel-core/std",
-    "firewheel-graph/std",
-    "firewheel-nodes/std",
-]
+std = ["firewheel-core/std", "firewheel-graph/std", "firewheel-nodes/std"]
 # Enable this if "std" is disabled.
 libm = ["firewheel-core/libm", "firewheel-nodes/libm"]
 # Use the `tracing` crate for logging. Currently requires `std`.
@@ -85,9 +81,7 @@ peak_meter_node = ["firewheel-nodes/peak_meter"]
 # Enables the sampler node
 sampler_node = ["firewheel-nodes/sampler"]
 # Enables the basic 3D spatial positioning node
-spatial_basic_node = [
-    "firewheel-nodes/spatial_basic",
-]
+spatial_basic_node = ["firewheel-nodes/spatial_basic"]
 # Enables the triple buffer node for sending raw audio data from the
 # audio graph to another thread. Useful for cases where you only care
 # about the latest data in the buffer, such as for creating visualizers.
@@ -200,7 +194,9 @@ bevy_platform = { version = "0.20.0", default-features = false, features = [
 bevy_ecs = { version = "0.20.0", default-features = false }
 bevy_reflect = { version = "0.20.0", default-features = false }
 fixed-resample = { version = "0.13.0", default-features = false }
-symphonium = { version = "0.13.0", default-features = false, features = ["decode-native"] }
+symphonium = { version = "0.13.0", default-features = false, features = [
+    "decode-native",
+] }
 num-traits = { version = "0.2", default-features = false }
 audioadapter = { version = "5.0", default-features = false }
 audioadapter-buffers = { version = "5.0", default-features = false }
